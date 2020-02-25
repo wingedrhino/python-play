@@ -2,6 +2,8 @@
 import os
 from os.path import expanduser
 
+# execute_in_dir decorates a method so that it always executes in the directory
+# specified by dirname.
 def execute_in_dir(dirname):
   def execute_in_dir_decorator(callback):
     def decorated_callback(*args, **kw):
@@ -20,6 +22,7 @@ def say_what(callback):
     print(f'Finished executing {callback.__name__}')
   return decorated_callback
 
+# prints current directory
 def curdir():
   print(f'Current directory: {os.getcwd()} ')
 
@@ -34,6 +37,7 @@ def do_something_in_home(arg1, arg2, kw1, kw2=44):
 def do_something_in_tmp():
   curdir()
 
+# Begin main execution
 curdir()
 do_something_in_home(1, 2, kw1=3)
 curdir()
