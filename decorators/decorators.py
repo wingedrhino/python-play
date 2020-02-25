@@ -25,10 +25,17 @@ def curdir():
 
 @execute_in_dir(expanduser('~'))
 @say_what
-def do_something(arg1, arg2, kw1, kw2=44):
+def do_something_in_home(arg1, arg2, kw1, kw2=44):
   curdir()
   print(f'arg1={arg1}, arg2={arg2}, kw1={kw1}, kw2={kw2}')
 
+@execute_in_dir('/tmp')
+@say_what
+def do_something_in_tmp():
+  curdir()
+
 curdir()
-do_something(1, 2, kw1=3)
+do_something_in_home(1, 2, kw1=3)
+curdir()
+do_something_in_tmp()
 curdir()
